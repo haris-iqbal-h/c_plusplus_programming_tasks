@@ -12,7 +12,7 @@ public:
 };
 int main()
 {
-	// Question 01
+	// Question 01 
 	int size;
 	do
 	{
