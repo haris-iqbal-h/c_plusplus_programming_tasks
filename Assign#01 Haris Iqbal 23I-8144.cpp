@@ -11,156 +11,156 @@ class Floor{
 };
 int main(){
 	//Question 01
-//	int size;
-//	do{
-//	 	cout<<"Enter the Number of Floor : ";
-//		cin>>size;	
-//	}while(size<1);
-//	
-//	Floor floor[size];
-//		for(int i=0;i<size;i++){
-//			do{
-//				cout<<"Enter No of Rooms of "<<i+1<<" Floor :";
-//				cin>>floor[i].room;
-//			}while(floor[i].room<10);
-//			do{
-//				cout<<"Enter No of Rooms Occupied : ";
-//				cin>>floor[i].occupied;
-//			}while(floor[i].occupied > floor[i].room);
-//		}
-//		cout<<"\nNo of Floors in Hostal : "<<size<<endl;
-//		
-//		float total_room=0;
-//		float total_occupied=0;
-//		for(int i=0;i<size;i++){
-//			total_room+=floor[i].room;
-//			total_occupied+=floor[i].occupied;
-//		}
-//		cout<<"Total No of Rooms : "<<total_room<<endl;
-//		cout<<"Total No of Rooms Occupied: "<<total_occupied<<endl;
-//		cout<<"Total No of Rooms Unoccupied: "
-//		<<total_room-total_occupied<<endl;
-//		cout<<"Percentage of Occupied : "
-//		<<(total_occupied/total_room)*100<<"%"<<endl;
+	int size;
+	do{
+		cout<<"Enter the Number of Floor : ";
+		cin>>size;	
+	}while(size<1);
+	
+	Floor floor[size];
+		for(int i=0;i<size;i++){
+			do{
+				cout<<"Enter No of Rooms of "<<i+1<<" Floor :";
+				cin>>floor[i].room;
+			}while(floor[i].room<10);
+			do{
+				cout<<"Enter No of Rooms Occupied : ";
+				cin>>floor[i].occupied;
+			}while(floor[i].occupied > floor[i].room);
+		}
+		cout<<"\nNo of Floors in Hostal : "<<size<<endl;
+		
+		float total_room=0;
+		float total_occupied=0;
+		for(int i=0;i<size;i++){
+			total_room+=floor[i].room;
+			total_occupied+=floor[i].occupied;
+		}
+		cout<<"Total No of Rooms : "<<total_room<<endl;
+		cout<<"Total No of Rooms Occupied: "<<total_occupied<<endl;
+		cout<<"Total No of Rooms Unoccupied: "
+		<<total_room-total_occupied<<endl;
+		cout<<"Percentage of Occupied : "
+		<<(total_occupied/total_room)*100<<"%"<<endl;
 
 	//Question 02
-//	int sale[5];
-//	for(int i=0;i<5;i++){
-//		cout<<"Enter  today's sales for store "<<i+1<<": ";
-//		cin>>sale[i];
-//	}
-//	cout<<"\nSALES BAR CHART (Each * = Rs.100)"<<endl;
-//	for(int i=0;i<5;i++){
-//		int x=sale[i]/100;
-//		cout<<"Store 01: ";
-//		for(int j=0;j<x;j++){
-//			cout<<"*";
-//		}
-//		cout<<endl;
-//	}
+	int sale[5];
+	for(int i=0;i<5;i++){
+		cout<<"Enter  today's sales for store "<<i+1<<": ";
+		cin>>sale[i];
+	}
+	cout<<"\nSALES BAR CHART (Each * = Rs.100)"<<endl;
+	for(int i=0;i<5;i++){
+		int x=sale[i]/100;
+		cout<<"Store 01: ";
+		for(int j=0;j<x;j++){
+			cout<<"*";
+		}
+		cout<<endl;
+	}
 //	Question 03
-//	char ch;
-//	int no,qty;
-//	int bill; 
-//	cout<<"M Meals"<<endl;
-//	cout<<"B Beverages"<<endl;
-//	do{
-//		cout<<"Enter m/M to buy a meal and B or b for a Beverage"<<endl;
-//		cin>>ch;
-//	}while(ch!='m' && ch!='b' && ch=='M' && ch=='B') ;
-//	if( (ch=='m') || (ch=='M') ){
-//		do{
-//			cout<<"1. Burger Rs. 450"<<endl;
-//			cout<<"2. Roll Paratha Rs. 220"<<endl;
-//			cout<<"3. Spaghetti Rs. 300"<<endl;	
-//			cin>>no;
-//		}while(no>3 && no<1);
-//		cout<<"Enter Quantity of Selected Item :";
-//		cin>>qty;
-//		switch(no){
-//			case 1:
-//				bill=qty*450;
-//				break;
-//			case 2:
-//				bill=qty*220;
-//				break;
-//			case 3:
-//				bill=qty*300;
-//		}
-//	}else{
-//		do{
-//			cout<<"1. Coffee Rs 200/cup"<<endl;
-//			cout<<"2. Fresh Juice Rs. 350/glass"<<endl;
-//			cout<<"3. Green Tea Rs. 75/cup"<<endl;	
-//			cin>>no;
-//		}while(no>3 && no<1);
-//		cout<<"Enter Quantity of Selected Item :";
-//		cin>>qty;
-//		switch(no){
-//			case 1:
-//				bill=qty*200;
-//				break;
-//			case 2:
-//				bill=qty*350;
-//				break;
-//			case 3:
-//				bill=qty*75;
-//		}
-//	}
-//	cout<<"Original Bill : "<<bill<<endl;
-//	
-//	time_t timeNow = time(0);
-//	tm* now = localtime(&timeNow);
-//	int thisHour = now->tm_hour;
-//	cout<<"time hrs :"<<thisHour<<endl;
-//	if(thisHour>=16 && thisHour<=18){
-//		bill-=bill*0.25;
-//		cout<<"Bill after 25 % discount :"<<bill<<endl;
-//	}else if(thisHour>=1 && thisHour<=8){
-//		bill-=bill*0.5;
-//		cout<<"Bill after 25 % discount :"<<bill<<endl;
-//	}else{
-//		cout<<"Bill with No discount :"<<bill<<endl;
-//	}
+	char ch;
+	int no,qty;
+	int bill; 
+	cout<<"M Meals"<<endl;
+	cout<<"B Beverages"<<endl;
+	do{
+		cout<<"Enter m/M to buy a meal and B or b for a Beverage"<<endl;
+		cin>>ch;
+	}while(ch!='m' && ch!='b' && ch=='M' && ch=='B') ;
+	if( (ch=='m') || (ch=='M') ){
+		do{
+			cout<<"1. Burger Rs. 450"<<endl;
+			cout<<"2. Roll Paratha Rs. 220"<<endl;
+			cout<<"3. Spaghetti Rs. 300"<<endl;	
+			cin>>no;
+		}while(no>3 && no<1);
+		cout<<"Enter Quantity of Selected Item :";
+		cin>>qty;
+		switch(no){
+			case 1:
+				bill=qty*450;
+				break;
+			case 2:
+				bill=qty*220;
+				break;
+			case 3:
+				bill=qty*300;
+		}
+	}else{
+		do{
+			cout<<"1. Coffee Rs 200/cup"<<endl;
+			cout<<"2. Fresh Juice Rs. 350/glass"<<endl;
+			cout<<"3. Green Tea Rs. 75/cup"<<endl;	
+			cin>>no;
+		}while(no>3 && no<1);
+		cout<<"Enter Quantity of Selected Item :";
+		cin>>qty;
+		switch(no){
+			case 1:
+				bill=qty*200;
+				break;
+			case 2:
+				bill=qty*350;
+				break;
+			case 3:
+				bill=qty*75;
+		}
+	}
+	cout<<"Original Bill : "<<bill<<endl;
+	
+	time_t timeNow = time(0);
+	tm* now = localtime(&timeNow);
+	int thisHour = now->tm_hour;
+	cout<<"time hrs :"<<thisHour<<endl;
+	if(thisHour>=16 && thisHour<=18){
+		bill-=bill*0.25;
+		cout<<"Bill after 25 % discount :"<<bill<<endl;
+	}else if(thisHour>=1 && thisHour<=8){
+		bill-=bill*0.5;
+		cout<<"Bill after 25 % discount :"<<bill<<endl;
+	}else{
+		cout<<"Bill with No discount :"<<bill<<endl;
+	}
 
 //	Question 04
-//	char ch4;
-//	cout<<"Enter a Character :";
-//	ch4=getch();
-//	cout<<"\nCharacter :"<<ch4<<endl;
-//	cout<<"ASCII :"<<(int)ch4<<endl;
-//	if((ch4>=97 && ch4<=122) || (ch4>=65 && ch4<=90)){
-//		cout<<"Alphabet"<<endl;
-//	}else if(ch4>=48 && ch4<=57){
-//		cout<<"Numeric"<<endl;
-//	}else{
-//		cout<<"Special Character"<<endl;
-//	}
+	char ch4;
+	cout<<"Enter a Character :";
+	ch4=getchar();
+	cout<<"\nCharacter :"<<ch4<<endl;
+	cout<<"ASCII :"<<(int)ch4<<endl;
+	if((ch4>=97 && ch4<=122) || (ch4>=65 && ch4<=90)){
+		cout<<"Alphabet"<<endl;
+	}else if(ch4>=48 && ch4<=57){
+		cout<<"Numeric"<<endl;
+	}else{
+		cout<<"Special Character"<<endl;
+	}
 
-//	Question 05
-//	int binary;
-//	int r;
-//	
-//	cout<<"Enter the Binary Number"<<endl;
-//	cin>>binary;
-//	
-//	int decimal=0;
-//	for(int i=0;binary>0;i++){
-//		r=binary%10;
-//        binary=binary/10;
-////        cout<<"\nDigit : "<<r;
-//        decimal+= r*pow(2,i);
-//		cout<<"Deciaml "<<(decimal^2)<<endl;
-//	}
-//	cout<<"Deciaml : "<<decimal<<endl;
-//	
-//	cout<<""<<endl;
-//	while(binary>0){
-//		r=binary%10;
-//        binary=binary/10;
+	// Question 05
+	int binary;
+	int r;
+	
+	cout<<"Enter the Binary Number"<<endl;
+	cin>>binary;
+	
+	int decimal=0;
+	for(int i=0;binary>0;i++){
+		r=binary%10;
+        binary=binary/10;
 //        cout<<"\nDigit : "<<r;
-//		decimal+=r
-//	}
+        decimal+= r*pow(2,i);
+		cout<<"Deciaml "<<(decimal^2)<<endl;
+	}
+	cout<<"Deciaml : "<<decimal<<endl;
+	
+	cout<<""<<endl;
+	while(binary>0){
+		r=binary%10;
+        binary=binary/10;
+        cout<<"\nDigit : "<<r;
+		decimal+=r;	
+	}
 
 // 	Question 06
 	bool flag=false;
@@ -211,8 +211,8 @@ int main(){
 		if(str=="yes"){
 			do{
 				cout<<"Isolate what has changed. Verify it was installed correctly."
-				 <<"Restore server to last known working state or original shipped "
-				 <<"configuration. ";
+				<<"Restore server to last known working state or original shipped "
+				<<"configuration. ";
 				getline(cin,str);
 			}while(str!="DONE");
 			do{
@@ -304,12 +304,6 @@ int main(){
 				goto exit;
 			}
 		}
-		
 	}
-	
-	
-	
-	
-	
 }
 
