@@ -26,6 +26,7 @@ int main(){
 
     //pass by reference with ppointer
     printCircle2(&c)
+        
 }
 void printCircle(Circle c){
     cout<<"The Area is "<<c.getArea()<<endl;
