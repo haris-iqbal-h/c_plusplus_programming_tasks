@@ -10,6 +10,29 @@ class Node
 };
 
 
+void removeDuplicates(Node* head)
+{
+    Node* current = head;
+
+    Node* next_next;
+
+    if (current == NULL)
+    return;
+
+    while (current->next != NULL)
+    {
+        if (current->data == current->next->data)
+        {
+            next_next = current->next->next;
+            free(current->next);
+            current->next = next_next;
+        }
+        else
+        {
+            current = current->next;
+        }
+    }
+}
 
 void push(Node** head_ref, int new_data)
 {
@@ -47,6 +70,7 @@ int main()
     cout << "Linked list before duplicate removal ";
     printList(head);
 
+    removeDuplicates(head);
 
     cout << "Linked list after duplicate removal ";    
     printList(head);            
