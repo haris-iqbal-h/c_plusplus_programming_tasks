@@ -1,5 +1,5 @@
 // C Program to pass an array to a function
-#include <stdio.h>
+#include <iostream>
 
 void printArray(int arr[])
 {

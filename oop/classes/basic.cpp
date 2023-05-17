@@ -23,7 +23,6 @@ class Room {
 };
 
 int main(){
-    // create objects 
     Room room1;
 
     //Error data members are private
