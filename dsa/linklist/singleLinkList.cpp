@@ -1,264 +1,350 @@
-#include<stdio.h>  
-#include<stdlib.h>  
-struct node   
-{  
-    int data;  
-    struct node *next;   
-};  
-struct node *head;  
+// C++ program for the above approach
+#include <iostream>
+using namespace std;
 
-void beginsert ();   
-void lastinsert ();  
-void randominsert();  
-void begin_delete();  
-void last_delete();  
-void random_delete();  
-void display();  
-void search();  
-void main ()  
-{  
-    int choice =0;  
-    while(choice != 9)   
-    {  
-        printf("\n\n*********Main Menu*********\n");  
-        printf("\nChoose one option from the following list ...\n");  
-        printf("\n===============================================\n");  
-        printf("\n1.Insert in begining\n2.Insert at last\n3.Insert at any random location\n4.Delete from Beginning\n  
-        5.Delete from last\n6.Delete node after specified location\n7.Search for an element\n8.Show\n9.Exit\n");  
-        printf("\nEnter your choice?\n");         
-        scanf("\n%d",&choice);  
-        switch(choice)  
-        {  
-            case 1:  
-            beginsert();      
-            break;  
-            case 2:  
-            lastinsert();         
-            break;  
-            case 3:  
-            randominsert();       
-            break;  
-            case 4:  
-            begin_delete();       
-            break;  
-            case 5:  
-            last_delete();        
-            break;  
-            case 6:  
-            random_delete();          
-            break;  
-            case 7:  
-            search();         
-            break;  
-            case 8:  
-            display();        
-            break;  
-            case 9:  
-            exit(0);  
-            break;  
-            default:  
-            printf("Please enter valid choice..");  
-        }  
-    }  
-}  
-void beginsert()  
-{  
-    struct node *ptr;  
-    int item;  
-    ptr = (struct node *) malloc(sizeof(struct node *));  
-    if(ptr == NULL)  
-    {  
-        printf("\nOVERFLOW");  
-    }  
-    else  
-    {  
-        printf("\nEnter value\n");    
-        scanf("%d",&item);    
-        ptr->data = item;  
-        ptr->next = head;  
-        head = ptr;  
-        printf("\nNode inserted");  
-    }  
-    
-}  
-void lastinsert()  
-{  
-    struct node *ptr,*temp;  
-    int item;     
-    ptr = (struct node*)malloc(sizeof(struct node));      
-    if(ptr == NULL)  
-    {  
-        printf("\nOVERFLOW");     
-    }  
-    else  
-    {  
-        printf("\nEnter value?\n");  
-        scanf("%d",&item);  
-        ptr->data = item;  
-        if(head == NULL)  
-        {  
-            ptr -> next = NULL;  
-            head = ptr;  
-            printf("\nNode inserted");  
-        }  
-        else  
-        {  
-            temp = head;  
-            while (temp -> next != NULL)  
-            {  
-                temp = temp -> next;  
-            }  
-            temp->next = ptr;  
-            ptr->next = NULL;  
-            printf("\nNode inserted");  
-        
-        }  
-    }  
-}  
-void randominsert()  
-{  
-    int i,loc,item;   
-    struct node *ptr, *temp;  
-    ptr = (struct node *) malloc (sizeof(struct node));  
-    if(ptr == NULL)  
-    {  
-        printf("\nOVERFLOW");  
-    }  
-    else  
-    {  
-        printf("\nEnter element value");  
-        scanf("%d",&item);  
-        ptr->data = item;  
-        printf("\nEnter the location after which you want to insert ");  
-        scanf("\n%d",&loc);  
-        temp=head;  
-        for(i=0;i<loc;i++)  
-        {  
-            temp = temp->next;  
-            if(temp == NULL)  
-            {  
-                printf("\ncan't insert\n");  
-                return;  
-            }  
-        
-        }  
-        ptr ->next = temp ->next;   
-        temp ->next = ptr;   
-        printf("\nNode inserted");  
-    }  
-}  
-void begin_delete()  
-{  
-    struct node *ptr;  
-    if(head == NULL)  
-    {  
-        printf("\nList is empty\n");  
-    }  
-    else   
-    {  
-        ptr = head;  
-        head = ptr->next;  
-        free(ptr);  
-        printf("\nNode deleted from the begining ...\n");  
-    }  
-}  
-void last_delete()  
-{  
-    struct node *ptr,*ptr1;  
-    if(head == NULL)  
-    {  
-        printf("\nlist is empty");  
-    }  
-    else if(head -> next == NULL)  
-    {  
-        head = NULL;  
-        free(head);  
-        printf("\nOnly node of the list deleted ...\n");  
-    }  
-        
-    else  
-    {  
-        ptr = head;   
-        while(ptr->next != NULL)  
-        {  
-            ptr1 = ptr;  
-            ptr = ptr ->next;  
-        }  
-        ptr1->next = NULL;  
-        free(ptr);  
-        printf("\nDeleted Node from the last ...\n");  
-    }     
-}  
-void random_delete()  
-{  
-    struct node *ptr,*ptr1;  
-    int loc,i;    
-    printf("\n Enter the location of the node after which you want to perform deletion \n");  
-    scanf("%d",&loc);  
-    ptr=head;  
-    for(i=0;i<loc;i++)  
-    {  
-        ptr1 = ptr;       
-        ptr = ptr->next;  
-    
-        if(ptr == NULL)  
-        {  
-            printf("\nCan't delete");  
-            return;  
-        }  
-    }  
-    ptr1 ->next = ptr ->next;  
-    free(ptr);  
-    printf("\nDeleted node %d ",loc+1);  
-}  
-void search()  
-{  
-    struct node *ptr;  
-    int item,i=0,flag;  
-    ptr = head;   
-    if(ptr == NULL)  
-    {  
-        printf("\nEmpty List\n");  
-    }  
-    else  
-    {   
-        printf("\nEnter item which you want to search?\n");   
-        scanf("%d",&item);  
-        while (ptr!=NULL)  
-        {  
-            if(ptr->data == item)  
-            {  
-                printf("item found at location %d ",i+1);  
-                flag=0;  
-            }   
-            else  
-            {  
-                flag=1;  
-            }  
-            i++;  
-            ptr = ptr -> next;  
-        }  
-        if(flag==1)  
-        {  
-            printf("Item not found\n");  
-        }  
-    }     
-}  
-void display()  
-{  
-    struct node *ptr;  
-    ptr = head;   
-    if(ptr == NULL)  
-    {  
-        printf("Nothing to print");  
-    }  
-    else  
-    {  
-        printf("\nprinting values . . . . .\n");   
-        while (ptr!=NULL)  
-        {  
-            printf("\n%d",ptr->data);  
-            ptr = ptr -> next;  
-        }  
-    }  
-}     
+// Node class to represent
+// a node of the linked list.
+class Node {
+public:
+	int data;
+	Node* next;
+
+	// Default constructor
+	Node()
+	{
+		data = 0;
+		next = NULL;
+	}
+
+	// Parameterised Constructor
+	Node(int data)
+	{
+		this->data = data;
+		this->next = NULL;
+	}
+};
+
+// Linked list class to
+// implement a linked list.
+class Linkedlist {
+	Node* head;
+
+public:
+	// Default constructor
+	Linkedlist() { head = NULL; }
+
+	// Function to insert a
+	// node at the end of the
+	// linked list.
+	void insertNode(int);
+
+	// Function to print the
+	// linked list.
+	void printList();
+
+	// Function to delete the
+	// node at given position
+	void deleteNode(int);
+};
+
+// Function to delete the
+// node at given position
+void Linkedlist::deleteNode(int nodeOffset)
+{
+	Node *temp1 = head, *temp2 = NULL;
+	int ListLen = 0;
+
+	if (head == NULL) {
+		cout << "List empty." << endl;
+		return;
+	}
+
+	// Find length of the linked-list.
+	while (temp1 != NULL) {
+		temp1 = temp1->next;
+		ListLen++;
+	}
+
+	// Check if the position to be
+	// deleted is greater than the length
+	// of the linked list.
+	if (ListLen < nodeOffset) {
+		cout << "Index out of range"
+			<< endl;
+		return;
+	}
+
+	// Declare temp1
+	temp1 = head;
+
+	// Deleting the head.
+	if (nodeOffset == 1) {
+
+		// Update head
+		head = head->next;
+		delete temp1;
+		return;
+	}
+
+	// Traverse the list to
+	// find the node to be deleted.
+	while (nodeOffset-- > 1) {
+
+		// Update temp2
+		temp2 = temp1;
+
+		// Update temp1
+		temp1 = temp1->next;
+	}
+
+	// Change the next pointer
+	// of the previous node.
+	temp2->next = temp1->next;
+
+	// Delete the node
+	delete temp1;
+}
+
+// Function to insert a new node.
+void Linkedlist::insertNode(int data)
+{
+	// Create the new Node.
+	Node* newNode = new Node(data);
+
+	// Assign to head
+	if (head == NULL) {
+		head = newNode;
+		return;
+	}
+
+	// Traverse till end of list
+	Node* temp = head;
+	while (temp->next != NULL) {
+
+		// Update temp
+		temp = temp->next;
+	}
+
+	// Insert at the last.
+	temp->next = newNode;
+}
+
+// Function to print the
+// nodes of the linked list.
+void Linkedlist::printList()
+{
+	Node* temp = head;
+
+	// Check for empty list.
+	if (head == NULL) {
+		cout << "List empty" << endl;
+		return;
+	}
+
+	// Traverse the list.
+	while (temp != NULL) {
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+}
+
+// Driver Code
+int main()
+{
+	Linkedlist list;
+
+	// Inserting nodes
+	list.insertNode(1);
+	list.insertNode(2);
+	list.insertNode(3);
+	list.insertNode(4);
+
+	cout << "Elements of the list are: ";
+
+	// Print the list
+	list.printList();
+	cout << endl;
+
+	// Delete node at position 2.
+	list.deleteNode(2);
+
+	cout << "Elements of the list are: ";
+	list.printList();
+	cout << endl;
+	return 0;
+}
+// C++ program for the above approach
+#include <iostream>
+using namespace std;
+
+// Node class to represent
+// a node of the linked list.
+class Node {
+public:
+	int data;
+	Node* next;
+
+	// Default constructor
+	Node()
+	{
+		data = 0;
+		next = NULL;
+	}
+
+	// Parameterised Constructor
+	Node(int data)
+	{
+		this->data = data;
+		this->next = NULL;
+	}
+};
+
+// Linked list class to
+// implement a linked list.
+class Linkedlist {
+	Node* head;
+
+public:
+	// Default constructor
+	Linkedlist() { head = NULL; }
+
+	// Function to insert a
+	// node at the end of the
+	// linked list.
+	void insertNode(int);
+
+	// Function to print the
+	// linked list.
+	void printList();
+
+	// Function to delete the
+	// node at given position
+	void deleteNode(int);
+};
+
+// Function to delete the
+// node at given position
+void Linkedlist::deleteNode(int nodeOffset)
+{
+	Node *temp1 = head, *temp2 = NULL;
+	int ListLen = 0;
+
+	if (head == NULL) {
+		cout << "List empty." << endl;
+		return;
+	}
+
+	// Find length of the linked-list.
+	while (temp1 != NULL) {
+		temp1 = temp1->next;
+		ListLen++;
+	}
+
+	// Check if the position to be
+	// deleted is greater than the length
+	// of the linked list.
+	if (ListLen < nodeOffset) {
+		cout << "Index out of range"
+			<< endl;
+		return;
+	}
+
+	// Declare temp1
+	temp1 = head;
+
+	// Deleting the head.
+	if (nodeOffset == 1) {
+
+		// Update head
+		head = head->next;
+		delete temp1;
+		return;
+	}
+
+	// Traverse the list to
+	// find the node to be deleted.
+	while (nodeOffset-- > 1) {
+
+		// Update temp2
+		temp2 = temp1;
+
+		// Update temp1
+		temp1 = temp1->next;
+	}
+
+	// Change the next pointer
+	// of the previous node.
+	temp2->next = temp1->next;
+
+	// Delete the node
+	delete temp1;
+}
+
+// Function to insert a new node.
+void Linkedlist::insertNode(int data)
+{
+	// Create the new Node.
+	Node* newNode = new Node(data);
+
+	// Assign to head
+	if (head == NULL) {
+		head = newNode;
+		return;
+	}
+
+	// Traverse till end of list
+	Node* temp = head;
+	while (temp->next != NULL) {
+
+		// Update temp
+		temp = temp->next;
+	}
+
+	// Insert at the last.
+	temp->next = newNode;
+}
+
+// Function to print the
+// nodes of the linked list.
+void Linkedlist::printList()
+{
+	Node* temp = head;
+
+	// Check for empty list.
+	if (head == NULL) {
+		cout << "List empty" << endl;
+		return;
+	}
+
+	// Traverse the list.
+	while (temp != NULL) {
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+}
+
+// Driver Code
+int main()
+{
+	Linkedlist list;
+
+	// Inserting nodes
+	list.insertNode(1);
+	list.insertNode(2);
+	list.insertNode(3);
+	list.insertNode(4);
+
+	cout << "Elements of the list are: ";
+
+	// Print the list
+	list.printList();
+	cout << endl;
+
+	// Delete node at position 2.
+	list.deleteNode(2);
+
+	cout << "Elements of the list are: ";
+	list.printList();
+	cout << endl;
+	return 0;
+}
