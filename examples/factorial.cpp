@@ -1,18 +1,21 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int main()
-{
-    int i, n, fact=1;
+int main() {
+    int n;
+    long factorial = 1.0;
 
-    cout<<"Enter any positive number :: ";
-    cin>>n;
+    cout << "Enter a positive integer: ";
+    cin >> n;
 
-    for(i=1;i<=n;i++)
-    {
-        fact=fact*i;
+    if (n < 0)
+        cout << "Error! Factorial of a negative number doesn't exist.";
+    else {
+        for(int i = 1; i <= n; ++i) {
+            factorial *= i;
+        }
+        cout << "Factorial of " << n << " = " << factorial;    
     }
-    cout<<"\nFactorial of Number [ "<<n<<"! ] is :: "<<fact<<"\n";
 
     return 0;
 }
